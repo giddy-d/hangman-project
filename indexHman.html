@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleshangman.css') }}">
+</head>
+<body>
+    <h1>Hangman Game</h1>
+    <div id="hangman-word"></div>
+    <div id="hangman-image"></div>
+    <form id="guess-form" action="/play" method="post">
+        <input type="text" id="guess-input" name="guess" maxlength="1" autocomplete="off">
+        <button type="submit">Guess</button>
+    </form>
+    <div id="message"></div>
+</body>
+</html>
