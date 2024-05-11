@@ -82,7 +82,7 @@ def hangman():
     print(display_word(word, guessed_letters))
 
     while attempts < max_attempts:
-        guess = input("Guess a letter yo!:").lower()
+        guess = input("Guess a letter!:").lower()
 
         if guess in guessed_letters:
             print("That letter was already guessed! Try again.")
