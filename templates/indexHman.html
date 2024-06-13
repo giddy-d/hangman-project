@@ -34,7 +34,8 @@
       <input name="max_attempts" hidden value="{{max_attempts}}" />
       <button type="submit">Guess</button>
     </form>
-    <div id="message" class="message" aria-live="assertive"></div>
+    <div id="message" class="message" aria-live="assertive">{{message}}</div>
+    <a href="/">Restart Game</a>
     <script defer>
       let hiddenWordEl = document.getElementById("hidden-word");
       let word = "{{word}}";

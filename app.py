@@ -96,7 +96,7 @@ def play():
     guessed_letters = request.form['guessed_letters']
     attempts = int(request.form['attempts'])
     max_attempts = int(request.form['max_attempts'])
-    guess = request.form['guess']
+    guess = request.form['guess'].lower()
 
     if guess in guessed_letters:
         message = "That letter was already guessed! Try again."
@@ -104,7 +104,7 @@ def play():
         message = "Please enter a single letter."
     else:
         guessed_letters += guess
-        if guess in word:
+        if guess in word.lower():
             if display_word(word, guessed_letters) == word:
                 message = f"Congratulations! You guessed the word: {word}"
             else:
