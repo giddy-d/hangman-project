@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman Game</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styleshangman.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Hangman Game</h1>
+    <h2 id="hidden-word"></h2>
+    <h3>Guessed letters: {{guessed_letters}}</h3>
+    <div id="hangman-word" class="hangman-word" aria-live="'polite">
+      {{word}}
+    </div>
+    <pre id="hangman-image" class="hangman-image">{{hangman_state}}</pre>
+    <form id="guess-form" action="/play" method="post">
+      <label for="guess-input" class="visually-hidden">Enter a letter</label>
+      <input
+        type="text"
+        id="guess-input"
+        name="guess"
+        maxlength="1"
+        autocomplete="off"
+        required
+        aria-label="Guess a letter"
+      />
+      <input name="word" hidden value="{{word}}" />
+      <input name="guessed_letters" hidden value="{{guessed_letters}}" />
+      <input name="attempts" hidden value="{{attempts}}" />
+      <input name="max_attempts" hidden value="{{max_attempts}}" />
+      <button type="submit">Guess</button>
+    </form>
+    <div id="message" class="message" aria-live="assertive">{{message}}</div>
+    <a href="/">Restart Game</a>
+    <script defer>
+      let hiddenWordEl = document.getElementById("hidden-word");
+      let word = "{{word}}";
+      hiddenWordEl.innerText = word.replaceAll(
+        /(?:[^{{guessed_letters}}])/g,
+        "*"
+      );
+    </script>
+  </body>
+</html>
